@@ -1,7 +1,9 @@
 package com.example.inshortsclone.di
 
 import android.content.Context
+import com.example.currencyexchanage.utils.HelperMethods
 import com.example.inshortsclone.BuildConfig
+import com.example.inshortsclone.data.localDatabase.AppdataBase
 import com.example.inshortsclone.data.network.ApiService
 import dagger.Module
 import dagger.Provides
@@ -35,4 +37,10 @@ class ApplicationModule {
     @Provides
     fun provideService(retrofit: Retrofit): ApiService =retrofit.create(ApiService::class.java)
 
+    @Provides
+    fun providelocalservice(@ApplicationContext context: Context):AppdataBase= AppdataBase.getDatabaseInstance(context)
+
+
+    @Provides
+    fun provideHelperMethods(@ApplicationContext context: Context):HelperMethods= HelperMethods(context)
 }

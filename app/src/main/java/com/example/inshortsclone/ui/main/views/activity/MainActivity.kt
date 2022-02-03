@@ -22,6 +22,7 @@ class MainActivity : BaseActivity() {
         fetchLatestNews()
     }
 
+    /*-----------FETCHING DATA FROM DATA SOURCE------------*/
     private fun fetchLatestNews(){
         viewModel.getLatestNews().observe(this,
             {
@@ -30,14 +31,7 @@ class MainActivity : BaseActivity() {
                     when(resource.status){
                         Status.Success->{
                             it.data?.let {
-                                    it1 ->
-                                vertical_only.setAdapter(
-                                    ViewPagerAdapter(
-                                        this@MainActivity,
-                                        it1.results
-                                    )
-                                )
-
+                                    it1 -> vertical_only.setAdapter(ViewPagerAdapter(this@MainActivity, it1.results))
                             }
                             progress?.dismissSweet()
 
